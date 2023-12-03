@@ -1,11 +1,9 @@
-nums = []
+def main(file):
+	nums = []
 
-while True:
-	try:
-		line = input()
+	lines = file.read().splitlines()
+	for line in lines:
 		cleaned = ''.join([char for char in line if char.isdigit()])
 		nums.append(int(''.join([cleaned[0], cleaned[-1]])))
-	except EOFError:
-		break
 
-print(sum(nums))
+	print(sum(nums))

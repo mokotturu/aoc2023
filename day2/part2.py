@@ -1,11 +1,11 @@
 import math
 from collections import defaultdict
 
-powers = []
+def main(file):
+	powers = []
 
-while True:
-	try:
-		line = input()
+	lines = file.read().splitlines()
+	for line in lines:
 		game, sets = line.split(': ')
 		sets = sets.split('; ')
 
@@ -19,7 +19,5 @@ while True:
 
 		maxs = [max(cubes_collection[color]) for color in cubes_collection.keys()]
 		powers.append(math.prod(maxs))
-	except EOFError:
-		break
 
-print(sum(powers))
+	print(sum(powers))

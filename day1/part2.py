@@ -1,9 +1,9 @@
-nums = []
-CONST_NUMS = ['one', 'two', 'three', 'four', 'five', 'six', 'seven', 'eight', 'nine']
+def main(file):
+	nums = []
+	CONST_NUMS = ['one', 'two', 'three', 'four', 'five', 'six', 'seven', 'eight', 'nine']
 
-while True:
-	try:
-		line = input()
+	lines = file.read().splitlines()
+	for line in lines:
 		buf = ''
 		first_dig, second_dig = None, None
 		found_second = False
@@ -37,7 +37,5 @@ while True:
 				if found_second:
 					break
 		nums.append(int(''.join([str(first_dig), str(second_dig)])))
-	except EOFError:
-		break
 
-print(sum(nums))
+	print(sum(nums))
