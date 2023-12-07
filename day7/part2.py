@@ -24,17 +24,15 @@ def main(file):
 
 		if 'J' in hand:
 			j_idx = list(counts.keys()).index('J')
-			if j_count == len(hand):
-				values = (j_count,)
-			elif j_idx == len(counts) - 1:
-				values = values[:-2] + (values[-2] + j_count,)
-			else:
-				values = values[:j_idx] + values[j_idx + 1:-1] + (values[-1] + j_count,)
+			if j_count != len(hand):
+				if j_idx == len(counts) - 1:
+					values = values[:-2] + (values[-2] + j_count,)
+				else:
+					values = values[:j_idx] + values[j_idx + 1:-1] + (values[-1] + j_count,)
 
 		hands[values].append((hand, bid))
 
-	highest_rank = NUM_HANDS
-	amount = 0
+	highest_rank, amount = NUM_HANDS, 0
 	for _, hands_of_type in hands.items():
 		if hands_of_type:
 			hands_of_type.sort(key=lambda h: [CARD_ORDER.index(char) for char in h[0]])
