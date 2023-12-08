@@ -1,4 +1,3 @@
-import re
 import networkx as nx
 
 def main(file):
@@ -9,7 +8,7 @@ def main(file):
 
 	for line in lines[2:]:
 		node, children = line.split(' = ')
-		children = re.findall(r'\((.+)\)', children)[0].split(', ')
+		children = children[1:-1].split(', ')
 		G.add_node(node)
 		for child in children:
 			G.add_edge(node, child)
