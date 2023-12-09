@@ -1,5 +1,6 @@
 import argparse
 import importlib
+from time import time
 
 if __name__ == '__main__':
 	argparser = argparse.ArgumentParser()
@@ -9,4 +10,7 @@ if __name__ == '__main__':
 	args = argparser.parse_args()
 
 	with open(f'day{args.day}/{args.input}') as file:
+		start = time()
 		importlib.import_module(f'day{args.day}.part{args.part}').main(file)
+		end = time()
+		print(f'Finished in {(end - start) * 1000}ms')
